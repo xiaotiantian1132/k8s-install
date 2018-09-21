@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: redis
+    spec:
+      nodeSelector:
+        type: backEndNode1
+      containers:
+        - name: redis
+          image: redis:4.0.10
+          ports:
+            - containerPort: 6379
+        # - name: flaskapp-demo
+        #   image: jcdemo/flaskapp
+        #   ports:
+        #     - containerPort: 5000
